@@ -1,0 +1,9 @@
+.link {
+    color: darken($color: $primary, $amount: 20);
+    text-decoration: none;
+    float: right;
+   
+    &:hover {
+        text-decoration: underline;
+    }
+}
