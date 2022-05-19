@@ -3,7 +3,7 @@ import { db } from "../firebase/firebase-config";
 import { loadNotes } from "../helpers/loadNotes";
 import Swal from "sweetalert2";
 import { fileUpload } from "../helpers/fileUpload";
-import { type } from "@testing-library/user-event/dist/type";
+
 
 
 export const startNewNote = () => {
@@ -112,7 +112,28 @@ export const startDeleting = ( id ) => {
         const uid = getState().auth.uid;
         await db.doc(`${ uid }/journal/notes/${ id }`).delete();
 
-        dispatch( deleteNote( id ) );
+       
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+
+                 dispatch( deleteNote( id ) );
+                 
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              )
+            }
+          })
         
     }
 }

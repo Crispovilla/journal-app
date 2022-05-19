@@ -40,8 +40,8 @@ export const Sidebar = () => {
         <div 
             className='journal__new-entry'
             onClick={ handleAddNew }
-            >
-            <i className="fa-solid fa-book-journal-whills fa-4x"></i>            
+            >               
+            <i className="fa-solid fa-address-card fa-4x"></i>            
             <p className='mt-5'>
                 New entry
             </p>
